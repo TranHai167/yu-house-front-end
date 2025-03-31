@@ -11,14 +11,6 @@ const navItems = [
   { name: "Cooperation", href: "/cooperation" },
   { name: "Contact", href: "/contact" },
   { name: "Recruitment", href: "/recruitment" },
-  {
-    name: "Products",
-    href: "/products",
-    submenu: [
-      { name: "Brokerage", href: "/products/brokerage" },
-      { name: "Apartment Ecosystem", href: "/products/ecosystem" },
-    ],
-  },
 ]
 
 export default function Navbar() {
@@ -53,22 +45,6 @@ export default function Navbar() {
               >
                 {item.name}
               </Link>
-
-              {item.submenu && (
-                <div className="absolute left-0 mt-2 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="py-1">
-                    {item.submenu.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-yuhouse-yellow hover:text-yuhouse-navy"
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           ))}
         </div>
@@ -98,39 +74,6 @@ export default function Navbar() {
           <div className="flex flex-col space-y-4">
             {navItems.map((item) => (
               <div key={item.name} className="border-b border-gray-100 pb-2">
-                {item.submenu ? (
-                  <>
-                    <button
-                      onClick={() => toggleSubmenu(item.name)}
-                      className="flex w-full items-center justify-between py-2 text-base font-medium text-gray-700"
-                    >
-                      {item.name}
-                      <span className="text-gray-400">{activeSubmenu === item.name ? "−" : "+"}</span>
-                    </button>
-                    {activeSubmenu === item.name && (
-                      <div className="ml-4 mt-2 flex flex-col space-y-2">
-                        {item.submenu.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="py-2 text-sm text-gray-600 hover:text-yuhouse-navy"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="block py-2 text-base font-medium text-gray-700 hover:text-yuhouse-navy"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                )}
               </div>
             ))}
             <Button

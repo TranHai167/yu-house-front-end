@@ -16,14 +16,14 @@ export default function ProductsPage() {
           <div className="mb-6 inline-flex rounded-full bg-yuhouse-yellow p-4 text-yuhouse-navy">
             <Home className="h-8 w-8" />
           </div>
-          <h2 className="mb-4 text-2xl font-bold text-yuhouse-navy">Brokerage</h2>
+          <h2 className="mb-4 text-2xl font-bold text-yuhouse-navy">Môi giới</h2>
           <p className="mb-6 text-gray-600">
-            Our brokerage services connect buyers and sellers to find the perfect property match. We offer a wide range
-            of properties across Vietnam, from apartments and houses to commercial spaces. Our experienced agents
-            provide personalized guidance throughout the entire process.
+            Kết nối người mua và người bán để tìm ra bất động sản phù hợp nhất. Chúng tôi cung cấp nhiều loại
+            bất động sản trên khắp Việt Nam, từ căn hộ và nhà ở đến không gian thương mại. Các đại lý giàu kinh nghiệm của chúng tôi
+            cung cấp hướng dẫn cá nhân trong suốt toàn bộ quá trình.
           </p>
           <Button asChild className="bg-yuhouse-navy text-white hover:bg-yuhouse-navy/90">
-            <Link href="/products/brokerage">View Properties</Link>
+            <Link href="/products/brokerage">Xem chi tiết</Link>
           </Button>
         </div>
 
@@ -32,14 +32,14 @@ export default function ProductsPage() {
           <div className="mb-6 inline-flex rounded-full bg-yuhouse-yellow p-4 text-yuhouse-navy">
             <Building className="h-8 w-8" />
           </div>
-          <h2 className="mb-4 text-2xl font-bold text-yuhouse-navy">Apartment Ecosystem</h2>
+          <h2 className="mb-4 text-2xl font-bold text-yuhouse-navy">Hệ sinh thái căn hộ</h2>
           <p className="mb-6 text-gray-600">
-            Our comprehensive apartment ecosystem provides end-to-end solutions for property owners and residents. We
-            offer property management, maintenance services, community building, and digital tools to enhance the living
-            experience and maximize property value.
+            Cung cấp các giải pháp toàn diện cho chủ sở hữu và cư dân bất động sản. Chúng tôi
+            cung cấp dịch vụ quản lý bất động sản, dịch vụ bảo trì, xây dựng cộng đồng và các công cụ kỹ thuật số để nâng cao trải nghiệm sống
+            và tối đa hóa giá trị bất động sản.
           </p>
           <Button asChild className="bg-yuhouse-navy text-white hover:bg-yuhouse-navy/90">
-            <Link href="/products/ecosystem">Learn More</Link>
+            <Link href="/products/ecosystem">Xem chi tiết</Link>
           </Button>
         </div>
       </div>

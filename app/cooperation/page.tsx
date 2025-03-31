@@ -1,81 +1,191 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Building, Handshake, TrendingUp, Users } from "lucide-react"
+import { Building, Handshake, TrendingUp, Users, Briefcase, Key } from "lucide-react"
+import Marquee from "react-fast-marquee";
+import CooperationCard from "@/components/cooperation-card"
+
+const partnersRow1 = [
+  "/images/partners/augges.jpg",
+  "/images/partners/rasch.png",
+  "/images/partners/stadt-marburg-logo-bildmarke.jpg",
+  "/images/partners/resident.jpg",
+  "/images/partners/cartier-logo.png",
+  "/images/partners/base.png",
+  "/images/partners/augges.jpg",
+  "/images/partners/casadeco.jpg",
+  "/images/partners/batdongsan.jpg",
+];
+
+const partnersRow2 = [
+  "/images/partners/casadeco.jpg",
+  "/images/partners/augges.jpg",
+  "/images/partners/rasch.png",
+  "/images/partners/batdongsan.jpg",
+  "/images/partners/base.png",
+  "/images/partners/cartier-logo.png",
+  "/images/partners/viglacera.png",
+  "/images/partners/stadt-marburg-logo-bildmarke.jpg",
+  "/images/partners/augges.jpg",
+];
 
 const partnerTypes = [
   {
-    title: "Property Owners",
-    description: "Partner with us to list your properties and reach a wider audience of potential tenants and buyers.",
+    title: "Chủ sở hữu bất động sản",
+    description: "Hợp tác với chúng tôi để liệt kê bất động sản của bạn và tiếp cận nhiều khách hàng tiềm năng hơn.",
     icon: Building,
   },
   {
-    title: "Real Estate Agencies",
-    description: "Collaborate with us to expand your reach and provide better services to your clients.",
+    title: "Các đại lý bất động sản",
+    description: "Hợp tác với chúng tôi để mở rộng tầm ảnh hưởng và cung cấp dịch vụ tốt hơn cho khách hàng.",
     icon: Handshake,
   },
   {
-    title: "Investors",
-    description: "Invest in our growing platform and be part of the future of real estate in Vietnam.",
+    title: "Nhà đầu tư",
+    description: "Đầu tư vào nền tảng đang phát triển của chúng tôi và trở thành một phần của tương lai bất động sản Việt Nam.",
     icon: TrendingUp,
   },
   {
-    title: "Service Providers",
-    description: "Offer your services to our clients and become part of our comprehensive ecosystem.",
+    title: "Môi giới",
+    description: "Cung cấp dịch vụ của bạn cho khách hàng của chúng tôi và trở thành một phần của hệ sinh thái toàn diện.",
     icon: Users,
   },
 ]
 
+// Cooperation packages
+const brokerageFeatures = [
+  { text: "Property listing on Yuhouse.vn platform", included: true },
+  { text: "Professional photography of your property", included: true },
+  { text: "Tenant screening and verification", included: true },
+  { text: "Lease agreement preparation", included: true },
+  { text: "Marketing across multiple channels", included: true },
+  { text: "Regular market analysis and pricing advice", included: true },
+  { text: "24/7 customer support", included: true },
+]
+
+const buildingManagementFeatures = [
+  { text: "Complete building operations management", included: true },
+  { text: "Tenant relations and communication", included: true },
+  { text: "Maintenance and repair coordination", included: true },
+  { text: "Security services management", included: true },
+  { text: "Financial reporting and analysis", included: true },
+  { text: "Utility management and optimization", included: true },
+  { text: "Regular property inspections", included: true },
+]
+
+const subLeaseFeatures = [
+  { text: "Guaranteed monthly income", included: true },
+  { text: "Property maintenance and repairs", included: true },
+  { text: "Tenant management and relations", included: true },
+  { text: "No vacancy periods or income loss", included: true },
+  { text: "Regular property condition reports", included: true },
+  { text: "Professional property marketing", included: true },
+  { text: "End-of-lease property restoration", included: true },
+]
+
 export default function CooperationPage() {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold text-yuhouse-navy">Cooperation</h1>
-        <p className="mt-4 text-lg text-gray-600">Explore partnership opportunities with Yuhouse.vn</p>
+    <div className="w-full mx-auto px-4 py-16 relative">
+      {/* Background image - sử dụng filter grayscale để chuyển thành trắng đen */}
+      <div className="container mx-auto px-4 py-16 relative">
+        {/* Background với 2 ảnh */}
+        <div className="absolute inset-0 -z-10 h-full w-full">
+          {/* Ảnh bên trái */}
+          <div
+            className="absolute left-0 top-0 h-full w-1/2 bg-cover bg-center opacity-20"
+            style={{
+              backgroundImage: "url('https://tingtong.vn/template/assets/images/homepage/info_decor.png')",
+              filter: "grayscale(100%)",
+            }}
+          ></div>
+          {/* Ảnh bên phải */}
+          <div
+            className="absolute right-0 top-0 h-full w-1/2 bg-cover bg-center opacity-20"
+            style={{
+              backgroundImage: "url('/images/partners/background-right.png')",
+              filter: "grayscale(100%)",
+            }}
+          ></div>
+        </div>
+
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl font-bold text-yuhouse-navy relative inline-block">
+            Hợp Tác
+            {/* Optional: Thêm lớp phủ để chữ nổi bật hơn trên background */}
+            <span className="absolute inset-0 bg-white opacity-80 -z-10 rounded-lg scale-110"></span>
+          </h1>
+          <p className="mt-4 text-lg text-gray-600">Khám phá cơ hội hợp tác cùng Yuhouse</p>
+        </div>
       </div>
 
-      {/* Hero Section */}
-      <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
+      {/* Phần giới thiệu */}
+      <div className="container mb-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
         <div>
-          <h2 className="mb-4 text-3xl font-bold text-yuhouse-navy">Partner With Us</h2>
+          <h2 className="mb-4 text-3xl font-bold text-yuhouse-navy">Hợp Tác Cùng Chúng Tôi</h2>
           <p className="mb-6 text-lg text-gray-600">
-            At Yuhouse.vn, we believe in the power of collaboration. By working together with partners across the real
-            estate ecosystem, we can provide better services to our clients and contribute to the growth of the industry
-            in Vietnam.
+            Tại Yuhouse.vn, chúng tôi tin vào sức mạnh của sự hợp tác. Bằng cách làm việc cùng nhau, chúng tôi có thể cung cấp
+            dịch vụ tốt hơn cho khách hàng và thúc đẩy sự phát triển của ngành bất động sản tại Việt Nam.
           </p>
           <p className="mb-6 text-lg text-gray-600">
-            Whether you're a property owner, real estate agency, investor, or service provider, we invite you to explore
-            partnership opportunities with us.
+            Cho dù bạn là chủ sở hữu bất động sản, đại lý bất động sản, nhà đầu tư hay nhà cung cấp dịch vụ, chúng tôi mời bạn khám phá
+            cơ hội hợp tác với chúng tôi.
           </p>
           <Button className="bg-yuhouse-yellow text-yuhouse-navy hover:bg-yuhouse-navy hover:text-yuhouse-yellow">
-            Become a Partner
+            Trở Thành Đối Tác
           </Button>
         </div>
-        <div className="relative h-[300px] overflow-hidden rounded-lg lg:h-[400px]">
-          <Image src="/placeholder.svg?height=400&width=600" alt="Partnership" fill className="object-cover" />
+        <div className="relative h-[300px] overflow-hidden rounded-lg shadow-lg lg:h-[400px]">
+          <Image src="/images/partners/cooperate.png" alt="Hợp tác" fill className="object-cover" />
         </div>
       </div>
 
-      {/* Partner Types */}
-      <div className="mb-16">
-        <h2 className="mb-8 text-center text-2xl font-bold text-yuhouse-navy">Who Can Partner With Us</h2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {partnerTypes.map((type, index) => (
-            <Card key={index} className="transition-all duration-300 hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="mb-4 inline-flex rounded-full bg-yuhouse-yellow p-3 text-yuhouse-navy">
-                  <type.icon className="h-6 w-6" />
-                </div>
-                <h3 className="mb-2 text-xl font-bold text-yuhouse-navy">{type.title}</h3>
-                <p className="text-gray-600">{type.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+      {/* NEW SECTION: Cooperation Packages */}
+      <div className="container mb-16">
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-bold text-yuhouse-navy">Các gói hợp tác</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+            Choose the partnership model that best suits your needs and maximize the value of your real estate assets
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <CooperationCard
+            title="Brokerage Package"
+            description="Let us help you find the perfect tenants for your apartments, buildings, or offices with our comprehensive brokerage services."
+            price="Commission: 8% of annual rent"
+            features={brokerageFeatures}
+            icon={<Key className="h-6 w-6" />}
+          />
+
+          <CooperationCard
+            title="Building Management"
+            description="We take care of the entire building operation, providing professional management services with fees calculated per room."
+            price="From $10 per room/month"
+            features={buildingManagementFeatures}
+            icon={<Building className="h-6 w-6" />}
+          />
+
+          <CooperationCard
+            title="Rental & Sub-lease"
+            description="Yuhouse will sub-lease your property and handle all aspects of renting it out, guaranteeing you a stable monthly income."
+            price="Guaranteed fixed income"
+            features={subLeaseFeatures}
+            icon={<Briefcase className="h-6 w-6" />}
+          />
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="mb-4 text-gray-600">
+            Not sure which package is right for you? Contact us for a personalized consultation.
+          </p>
+          <Button className="bg-yuhouse-navy text-white hover:bg-yuhouse-yellow hover:text-yuhouse-navy">
+            Request Custom Quote
+          </Button>
         </div>
       </div>
 
       {/* Benefits */}
-      <div className="mb-16 rounded-lg bg-yuhouse-navy p-8 text-white">
+      <div className="container mb-16 rounded-lg bg-yuhouse-navy p-8 text-white">
         <h2 className="mb-8 text-center text-2xl font-bold text-yuhouse-yellow">Benefits of Partnership</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div>
@@ -123,109 +233,55 @@ export default function CooperationPage() {
         </div>
       </div>
 
-      {/* Success Stories */}
-      <div className="mb-16">
-        <h2 className="mb-8 text-center text-2xl font-bold text-yuhouse-navy">Success Stories</h2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Card className="overflow-hidden">
-            <div className="relative h-48 w-full">
-              <Image src="/placeholder.svg?height=200&width=400" alt="Success Story 1" fill className="object-cover" />
-            </div>
-            <CardContent className="p-6">
-              <h3 className="mb-2 text-xl font-bold text-yuhouse-navy">Sunrise Apartments</h3>
-              <p className="mb-4 text-sm text-gray-500">Property Owner Partnership</p>
-              <p className="text-gray-600">
-                "Partnering with Yuhouse.vn has significantly increased our occupancy rates and reduced vacancy periods.
-                Their professional approach and extensive network have been invaluable to us."
-              </p>
-              <p className="mt-4 font-semibold text-yuhouse-navy">- Tran Minh, Property Manager</p>
-            </CardContent>
-          </Card>
-          <Card className="overflow-hidden">
-            <div className="relative h-48 w-full">
-              <Image src="/placeholder.svg?height=200&width=400" alt="Success Story 2" fill className="object-cover" />
-            </div>
-            <CardContent className="p-6">
-              <h3 className="mb-2 text-xl font-bold text-yuhouse-navy">City Realty Group</h3>
-              <p className="mb-4 text-sm text-gray-500">Agency Partnership</p>
-              <p className="text-gray-600">
-                "Our collaboration with Yuhouse.vn has opened up new opportunities for our agency. The shared resources
-                and expertise have helped us better serve our clients."
-              </p>
-              <p className="mt-4 font-semibold text-yuhouse-navy">- Nguyen Lan, CEO</p>
-            </CardContent>
-          </Card>
-          <Card className="overflow-hidden">
-            <div className="relative h-48 w-full">
-              <Image src="/placeholder.svg?height=200&width=400" alt="Success Story 3" fill className="object-cover" />
-            </div>
-            <CardContent className="p-6">
-              <h3 className="mb-2 text-xl font-bold text-yuhouse-navy">Green Homes Development</h3>
-              <p className="mb-4 text-sm text-gray-500">Investor Partnership</p>
-              <p className="text-gray-600">
-                "Investing in Yuhouse.vn has been a rewarding experience. Their innovative approach to real estate and
-                strong market presence have delivered excellent returns."
-              </p>
-              <p className="mt-4 font-semibold text-yuhouse-navy">- Le Hung, Investment Director</p>
-            </CardContent>
-          </Card>
+      {/* Đối tượng hợp tác */}
+      <div className="container mb-16">
+        <h2 className="mb-8 text-center text-2xl font-bold text-yuhouse-navy">Ai Có Thể Hợp Tác Cùng Chúng Tôi?</h2>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {partnerTypes.map((type, index) => (
+            <Card key={index} className="transition-all duration-300 hover:shadow-lg">
+              <CardContent className="p-6">
+                <div className="mb-4 inline-flex rounded-full bg-yuhouse-yellow p-3 text-yuhouse-navy">
+                  <type.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-yuhouse-navy">{type.title}</h3>
+                <p className="text-gray-600">{type.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
 
-      {/* Partnership Process */}
       <div className="mb-16">
-        <h2 className="mb-8 text-center text-2xl font-bold text-yuhouse-navy">Partnership Process</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-          <div className="relative rounded-lg border bg-white p-6 text-center shadow-md">
-            <div className="absolute -top-4 left-1/2 inline-flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-yuhouse-yellow text-yuhouse-navy">
-              1
-            </div>
-            <h3 className="mb-2 mt-4 text-lg font-bold text-yuhouse-navy">Initial Contact</h3>
-            <p className="text-sm text-gray-600">
-              Reach out to us through our contact form or email to express your interest in partnership.
-            </p>
-          </div>
-          <div className="relative rounded-lg border bg-white p-6 text-center shadow-md">
-            <div className="absolute -top-4 left-1/2 inline-flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-yuhouse-yellow text-yuhouse-navy">
-              2
-            </div>
-            <h3 className="mb-2 mt-4 text-lg font-bold text-yuhouse-navy">Consultation</h3>
-            <p className="text-sm text-gray-600">
-              We'll schedule a meeting to discuss your needs, goals, and how we can work together.
-            </p>
-          </div>
-          <div className="relative rounded-lg border bg-white p-6 text-center shadow-md">
-            <div className="absolute -top-4 left-1/2 inline-flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-yuhouse-yellow text-yuhouse-navy">
-              3
-            </div>
-            <h3 className="mb-2 mt-4 text-lg font-bold text-yuhouse-navy">Agreement</h3>
-            <p className="text-sm text-gray-600">
-              We'll draft a partnership agreement that outlines the terms and conditions of our collaboration.
-            </p>
-          </div>
-          <div className="relative rounded-lg border bg-white p-6 text-center shadow-md">
-            <div className="absolute -top-4 left-1/2 inline-flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-yuhouse-yellow text-yuhouse-navy">
-              4
-            </div>
-            <h3 className="mb-2 mt-4 text-lg font-bold text-yuhouse-navy">Implementation</h3>
-            <p className="text-sm text-gray-600">
-              We'll implement the partnership and start working together to achieve our shared goals.
-            </p>
-          </div>
+        <h2 className="mb-8 text-center text-2xl font-bold text-yuhouse-navy">Các đối tác đồng hành</h2>
+        <div className="space-y-4">
+          <Marquee speed={40} direction="right" gradient={false}>
+            {partnersRow1.map((src, index) => (
+              <div key={index} className="mx-4">
+                <Image src={src} alt="Partner Logo" width={120} height={80} />
+              </div>
+            ))}
+          </Marquee>
+
+          <Marquee speed={40} direction="left" gradient={false}>
+            {partnersRow2.map((src, index) => (
+              <div key={index} className="mx-4">
+                <Image src={src} alt="Partner Logo" width={120} height={80} />
+              </div>
+            ))}
+          </Marquee>
         </div>
       </div>
 
-      {/* Call to Action */}
-      <div className="rounded-lg border bg-white p-8 text-center shadow-md">
-        <h2 className="mb-4 text-2xl font-bold text-yuhouse-navy">Ready to Partner With Us?</h2>
+      {/* Kêu gọi hành động */}
+      <div className="container rounded-lg border bg-white p-8 text-center shadow-md">
+        <h2 className="mb-4 text-2xl font-bold text-yuhouse-navy">Sẵn Sàng Hợp Tác Cùng Chúng Tôi?</h2>
         <p className="mb-6 text-lg text-gray-600">
-          Contact us today to explore partnership opportunities with Yuhouse.vn.
+          Liên hệ ngay để khám phá cơ hội hợp tác cùng Yuhouse.vn.
         </p>
         <Button className="bg-yuhouse-yellow text-yuhouse-navy hover:bg-yuhouse-navy hover:text-yuhouse-yellow">
-          Contact Us
+          Liên Hệ Ngay
         </Button>
       </div>
     </div>
   )
 }
-

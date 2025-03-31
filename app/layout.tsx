@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Yuhouse.vn - Real Estate Solutions",
   description: "Find your perfect home with Yuhouse.vn - Vietnam's premier real estate platform",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({

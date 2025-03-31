@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import ContactMap from "@/components/contact-map"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -36,6 +37,33 @@ export default function ContactPage() {
       message: "",
     })
   }
+
+  // Office locations with coordinates
+  const offices = [
+    {
+      name: "Ho Chi Minh City (Headquarters)",
+      address: "123 Nguyen Hue Street, District 1, Ho Chi Minh City, Vietnam",
+      coordinates: [10.7769, 106.7009] as [number, number], // Latitude, Longitude
+    },
+    {
+      name: "Hanoi",
+      address: "456 Ba Dinh Street, Ba Dinh District, Hanoi, Vietnam",
+      coordinates: [21.0285, 105.8542] as [number, number],
+    },
+    {
+      name: "Da Nang",
+      address: "789 Bach Dang Street, Hai Chau District, Da Nang, Vietnam",
+      coordinates: [16.0544, 108.2022] as [number, number],
+    },
+    {
+      name: "Nha Trang",
+      address: "101 Tran Phu Street, Nha Trang City, Khanh Hoa, Vietnam",
+      coordinates: [12.2388, 109.1967] as [number, number],
+    },
+  ]
+
+  // Default to Ho Chi Minh City office
+  const [selectedOffice, setSelectedOffice] = useState(offices[0])
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -83,25 +111,29 @@ export default function ContactPage() {
             </div>
           </div>
 
+          {/* Map Section */}
+          <div className="mb-8">
+            <h2 className="mb-4 text-2xl font-bold text-yuhouse-navy">Find Us</h2>
+            <ContactMap center={selectedOffice.coordinates} markerText={selectedOffice.name} height="300px" />
+          </div>
+
+          {/* Office Locations */}
           <div>
-            <h2 className="mb-6 text-2xl font-bold text-yuhouse-navy">Our Offices</h2>
+            <h2 className="mb-4 text-2xl font-bold text-yuhouse-navy">Our Offices</h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="rounded-lg border bg-white p-4 shadow-md">
-                <h3 className="mb-2 font-semibold text-yuhouse-navy">Ho Chi Minh City (Headquarters)</h3>
-                <p className="text-sm text-gray-600">123 Nguyen Hue Street, District 1, Ho Chi Minh City, Vietnam</p>
-              </div>
-              <div className="rounded-lg border bg-white p-4 shadow-md">
-                <h3 className="mb-2 font-semibold text-yuhouse-navy">Hanoi</h3>
-                <p className="text-sm text-gray-600">456 Ba Dinh Street, Ba Dinh District, Hanoi, Vietnam</p>
-              </div>
-              <div className="rounded-lg border bg-white p-4 shadow-md">
-                <h3 className="mb-2 font-semibold text-yuhouse-navy">Da Nang</h3>
-                <p className="text-sm text-gray-600">789 Bach Dang Street, Hai Chau District, Da Nang, Vietnam</p>
-              </div>
-              <div className="rounded-lg border bg-white p-4 shadow-md">
-                <h3 className="mb-2 font-semibold text-yuhouse-navy">Nha Trang</h3>
-                <p className="text-sm text-gray-600">101 Tran Phu Street, Nha Trang City, Khanh Hoa, Vietnam</p>
-              </div>
+              {offices.map((office, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedOffice(office)}
+                  className={`rounded-lg border p-4 text-left transition-all hover:border-yuhouse-yellow hover:shadow-md ${selectedOffice.name === office.name
+                      ? "border-yuhouse-yellow bg-yuhouse-yellow/10 shadow-md"
+                      : "border-gray-200 bg-white"
+                    }`}
+                >
+                  <h3 className="mb-2 font-semibold text-yuhouse-navy">{office.name}</h3>
+                  <p className="text-sm text-gray-600">{office.address}</p>
+                </button>
+              ))}
             </div>
           </div>
         </div>
