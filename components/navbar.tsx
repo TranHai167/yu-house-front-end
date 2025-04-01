@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { name: "Company Introduction", href: "/about" },
+  { name: "Giới thiệu", href: "/about" },
   { name: "Cooperation", href: "/cooperation" },
   { name: "Contact", href: "/contact" },
-  { name: "Recruitment", href: "/recruitment" },
+  { name: "Tuyển dụng", href: "/recruitment" },
 ]
 
 export default function Navbar() {
